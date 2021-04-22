@@ -1,0 +1,27 @@
+{
+    "HOME": {
+        "TITLE": "Bonjour!",
+        "SELECT": "Changer la langue",
+        "DATA": "Rechercher des composants",
+        "favB": "PRÉFÉRÉ",
+        "blackL": "LIGNE NOIRE",
+        "deacti": "DÉSACTIVER",
+        "dashB": "TABLEAU DE BORD",
+        "ps": "PS",
+        "searchBy":"Recherche par nom ou mot-clé",
+        "searchByID":"Recherche par Identité",
+        "sByName": "Recherche par nom",
+        "sByEmail": "Recherche par e-mail",
+        "sByGender": "Recherche par sexe",
+        "sByCreatedAt": "Recherche par Créé à",
+        "sByUpdatedAt": "Recherche par mise à jour à"
+      },
+      "TABLE": {
+        "ID": "ID",
+        "Name": "Nom",
+        "Email": "Email",
+        "Gender": "Le sexe",
+        "Created_at": "Créé à",
+        "Updated_at": "Mis à jour à"
+      }
+}

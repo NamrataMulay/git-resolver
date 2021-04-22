@@ -1,0 +1,193 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">
+            <ul class="nav">
+                <li class="nav-item">
+                </li>
+            </ul>
+            <ul>
+                <li class="badge mt-2">{{ 'HOME.ps' | translate }} </li>
+            </ul>
+        </div>
+        <div class="col-md-2 bg-dark">
+            <ul class="nav">
+                <li class="nav-item mt-1">
+                    <a class="cursor-pointer">{{ 'HOME.dashB' | translate }} </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-md-9">
+            <nav class="navbar navbar-expand-md bg-success sticky-top first-nav">
+                <span class="nav-link" style="color: white;">1</span>
+            </nav>
+
+            <div class="mt-2 ml-3">
+                <h2>{{ 'HOME.TITLE' | translate }}</h2>
+                <label>
+                    {{ 'HOME.SELECT' | translate }}
+                    <select #langSelect (change)="translate.use(langSelect.value)">
+                        <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                            [selected]="lang === translate.currentLang">{{ lang }}</option>
+                    </select>
+                </label>
+
+            </div>
+            <!-- <p-dropdown [options]="languages" [(ngModel)]="selectedLang1" placeholder="Select a Language" optionLabel="name"
+	[showClear]="true"></p-dropdown> -->
+            <hr>
+
+
+
+            <div class="col-md-12">
+                <span class="h4">
+                    <label>
+                        {{ 'HOME.DATA' | translate }}
+                        <!-- <select #langSelect (change)="translate.use(langSelect.value)">
+                        <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                            [selected]="lang === translate.currentLang">{{ lang }}</option>
+                        </select> -->
+                    </label>
+                </span>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-6 ml-3 mb-2">
+                    <label>{{ 'HOME.searchBy' | translate }}
+                        <input type="text" class="form-control mt-2" />
+                    </label>
+                </div>
+            </div>
+
+            
+
+            <nav class="navbar navbar-expand-md bg-info navbar-dark sticky-top second-nav">
+                <label class="btn btn-info btn-md ml-2 p-1 cursor-pointer">
+                    {{ 'HOME.favB' | translate }}
+                    <!-- <button class="btn btn-info btn-md ml-2 cursor-pointer">FAVORITE</button> -->
+                </label>
+                <label class="btn btn-info btn-md ml-2 p-1 cursor-pointer">
+                    {{ 'HOME.blackL' | translate }}
+                </label>
+                <!-- <button class="btn btn-info btn-md ml-2 cursor-pointer">BLACKLINE</button> -->
+                <label class="btn btn-info btn-md ml-2 p-1 cursor-pointer">
+                    {{ 'HOME.deacti' | translate }}
+                </label>
+                <!-- <button class="btn btn-info btn-md ml-2 cursor-pointer">DEACTIVATE</button> -->
+            </nav>
+
+            <div class="card">
+                <p-table #dt1 [value]="customers" [rows]="5" [paginator]="true" [pageLinks]="3"
+                    [rowsPerPageOptions]="[5,10,20]" styleClass="p-datatable-responsive" selectionMode="single"
+                    [(selection)]="selectedProduct1" dataKey="code">
+
+                    <ng-template pTemplate="header">
+                        <tr>
+
+                            <th pSortableColumn="id"><span class="tHeader">
+                                    {{ 'TABLE.ID' | translate }}
+                                </span>
+                                <p-sortIcon field="id"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="name"><span class="tHeader">
+                                    {{ 'TABLE.Name' | translate }}
+                                </span>
+                                <p-sortIcon field="name"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="email"><span class="tHeader">
+                                    {{ 'TABLE.Email' | translate }}
+                                </span>
+                                <p-sortIcon field="email"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="gender"><span class="tHeader">
+                                    {{ 'TABLE.Gender' | translate }}
+                                </span></th>
+                            <th pSortableColumn="created_at"><span class="tHeader">
+                                    {{ 'TABLE.Created_at' | translate }}
+                                </span></th>
+                            <th pSortableColumn="updated_at"><span class="tHeader">
+                                    {{ 'TABLE.Updated_at' | translate }}
+                                </span></th>
+                        </tr>
+                        <tr>
+                            <th>{{ 'HOME.searchByID' | translate }}
+                                <input pInputText type="text"
+                                    (input)="dt1.filter($event.target.value, 'id', 'contains')"
+                                    [value]="dt1.filters['id']?.value" class="mt-1 form-control form-control-sm" />
+                            </th>
+
+                            <th>{{ 'HOME.sByName' | translate }}
+                                <input pInputText type="text"
+                                    (input)="dt1.filter($event.target.value, 'name', 'contains')"
+                                    [value]="dt1.filters['name']?.value" class="mt-1 form-control form-control-sm" />
+                            </th>
+                            <th>{{ 'HOME.sByEmail' | translate }}
+                                <input pInputText type="text"
+                                    (input)="dt1.filter($event.target.value, 'email', 'contains')"
+                                    [value]="dt1.filters['email']?.value" class="mt-1 form-control form-control-sm" />
+                            </th>
+                            <th>{{ 'HOME.sByGender' | translate }}
+                                <input pInputText type="text"
+                                    (input)="dt1.filter($event.target.value, 'gender', 'contains')"
+                                    [value]="dt1.filters['gender']?.value" class="mt-1 form-control form-control-sm" />
+                            </th>
+                            <th>{{ 'HOME.sByCreatedAt' | translate }}
+                                <input pInputText type="text"
+                                    (input)="dt1.filter($event.target.value, 'created_at', 'contains')"
+                                    [value]="dt1.filters['created_at']?.value"
+                                    class="mt-1 form-control form-control-sm" />
+                            </th>
+                            <th>{{ 'HOME.sByUpdatedAt' | translate }}
+                                <input pInputText type="text"
+                                    (input)="dt1.filter($event.target.value, 'updated_at', 'contains')"
+                                    [value]="dt1.filters['updated_at']?.value"
+                                    class="mt-1 form-control form-control-sm" />
+
+                            </th>
+                        </tr>
+
+                    </ng-template>
+                    <ng-template pTemplate="body" let-customers>
+                        <tr (click)="onRowClick(customers.id)" [pSelectableRow]="customers">
+                            <td>{{customers.id}}</td>
+                            <td>{{customers.name}}</td>
+                            <td>{{customers.email}}</td>
+                            <td>{{customers.gender}}</td>
+                            <td>{{customers.created_at}}</td>
+                            <td>{{customers.updated_at}}</td>
+                        </tr>
+                    </ng-template>
+                    
+<!-- <a [routerLink]="['/emp', customers.id]"></a> -->
+<!-- <a [routerLink]="['emp', customers_id]"></a> -->
+
+
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">No customers found.</td>
+                        </tr>
+                    </ng-template>
+
+                    <!-- <div *ngFor="let products of Products">
+                        <a [routerLink]="['/product-detail/', products.id]">Product Detail</a>
+                    </div>
+                    <h6>Product Id: {{products_id}}</h6> -->
+
+                    <!-- <h2>By ID data</h2>
+                    <ng-template pTemplate="body" let-cust>
+                        <tr (click)="onRowClick(cust.id)" [pSelectableRow]="cust">
+                            <td>{{cust.id}}</td>
+                            <td>{{cust.name}}</td>
+                            <td>{{cust.email}}</td>
+                            <td>{{cust.gender}}</td>
+                            <td>{{cust.created_at}}</td>
+                            <td>{{cust.updated_at}}</td>
+                        </tr>
+                    </ng-template> -->
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
